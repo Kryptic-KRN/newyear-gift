@@ -26,7 +26,4 @@ jobs:
 
   deploy:
     needs: build-and-deploy
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+    uses: actions/deploy-pages@v2
