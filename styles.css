@@ -1,14 +1,14 @@
  :root{--bg:#FFF8F0;--card:#FFFFFF;--accent:#FFCDD2;--accent-dark:#FF8A80;--muted:#6b6b6b}
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#FFF8F0 0%, #FFF1E6 100%);color:#333}
+body{margin:0;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#E8F6FF 0%, #FFF8F0 28%, #FFF1E6 100%);color:#333;font-size:16px}
 .card{width:92%;max-width:820px;background:var(--card);border-radius:20px;padding:28px;box-shadow:0 14px 40px rgba(21,21,21,0.08);position:relative;overflow:hidden}
 .topbar{display:flex;align-items:center;justify-content:center;gap:18px;position:relative}
-.title{font-size:28px;margin:0;color:#B71C1C;text-shadow:0 2px 0 rgba(255,255,255,0.6)}
+.title{font-size:32px;margin:0;color:#7B1FA2;text-shadow:0 2px 0 rgba(255,255,255,0.6)}
 .tulip-left,.jewel-right{width:48px;height:48px}
 .tulip-svg,.jewel-svg{width:100%;height:100%}
 .message{padding:18px 10px 6px;text-align:center}
-.lead{font-size:18px;margin:8px 0 14px;color:var(--muted)}
+.lead{font-size:20px;margin:8px 0 14px;color:var(--muted);line-height:1.45}
 .row-icons{display:flex;align-items:center;justify-content:center}
 .tulip-big{width:160px;height:200px;margin:12px auto;transform:translateY(0);transition:transform .6s cubic-bezier(.2,.9,.3,1)}
 .tulip-big-svg{width:100%;height:100%}
@@ -16,10 +16,41 @@ body{margin:0;font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto
 #surpriseBtn{background:linear-gradient(90deg,var(--accent) 0%, var(--accent-dark) 100%);color:white;border:0;padding:12px 20px;border-radius:12px;font-size:16px;cursor:pointer;box-shadow:0 8px 18px rgba(255,138,128,0.18)}
 #surpriseBtn:active{transform:translateY(1px)}
 .small-note{font-size:13px;color:#8a8a8a;margin-top:8px}
+.bihari{font-size:15px;color:#6a1b9a;margin-top:10px;font-style:italic}
+.bihari.visible{opacity:1;transform:translateY(0)}
 .footer{font-size:13px;color:#9e9e9e;text-align:center;margin-top:12px}
 /* confetti canvas */
 #confetti{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none}
 /* sparkle animation for jewel */
 .jewel-svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,0.08))}
+/* sticker / pasted look for tulips */
+.tulip-sticker{display:inline-block;background:#fff;padding:12px;border-radius:14px;box-shadow:0 20px 40px rgba(6,10,20,0.18),0 4px 10px rgba(0,0,0,0.08);transform:rotate(-1deg);transition:transform .35s ease,box-shadow .35s ease}
+.tulip-sticker:hover{transform:translateY(-6px) rotate(-0.4deg) scale(1.02);box-shadow:0 28px 48px rgba(6,10,20,0.22),0 6px 14px rgba(0,0,0,0.10)}
+.tulip-sticker-small{display:inline-block;padding:6px;border-radius:10px;box-shadow:0 8px 18px rgba(6,10,20,0.08);transform:none}
+
+/* make SVGs pop: sharpen + color and soft cast shadow to suggest depth-of-field */
+.tulip-sticker .tulip-svg,.tulip-sticker .tulip-big-svg{filter:url(#sharpen) saturate(1.35) contrast(1.08) brightness(1.02) drop-shadow(0 18px 28px rgba(0,0,0,0.22));shape-rendering:geometricPrecision;transition:filter .25s linear,transform .25s ease}
+.tulip-sticker .tulip-big-svg{display:block}
+
+/* subtle white rim to help shapes read against card */
+.tulip-big-svg path,.tulip-svg path{stroke:rgba(255,255,255,0.28);stroke-width:0.6;paint-order:stroke fill markers}
+
+/* title color set above */
 /* responsive */
 @media (min-width:900px){.title{font-size:34px}.tulip-big{width:220px;height:280px}}
+
+/* floating animation using CSS so JS doesn't need to mutate transforms frequently */
+@keyframes floaty { 0% { transform: translateY(0) } 50% { transform: translateY(-8px) } 100% { transform: translateY(0) } }
+.tulip-big{width:160px;height:200px;margin:12px auto;transform:translateY(0);transition:transform .6s cubic-bezier(.2,.9,.3,1);animation:floaty 3.6s ease-in-out infinite}
+
+/* Petal open animation */
+.tulip-big .petal{transform-origin:60% 40%;transition:transform 520ms cubic-bezier(.2,.9,.3,1)}
+.tulip-big.open .petal{transform:scaleX(1.18) translateY(-4px)}
+
+/* Reveal Bihari line */
+.bihari{font-size:15px;color:#6a1b9a;margin-top:10px;font-style:italic;opacity:0;transform:translateY(6px);transition:opacity .36s ease,transform .36s ease}
+.bihari.visible{opacity:1;transform:translateY(0)}
+
+/* Slightly larger small-note and footer */
+.small-note{font-size:14px;color:#8a8a8a;margin-top:8px}
+.footer{font-size:14px;color:#9e9e9e;text-align:center;margin-top:12px}

@@ -7,14 +7,22 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <!-- SVG filters (sharpen) used by CSS filters below -->
+  <svg width="0" height="0" style="position:absolute;left:0;top:0;pointer-events:none;">
+    <defs>
+      <filter id="sharpen" x="-20%" y="-20%" width="140%" height="140%">
+        <feConvolveMatrix order="3" kernelMatrix="0 -1 0 -1 5 -1 0 -1 0" preserveAlpha="true" />
+      </filter>
+    </defs>
+  </svg>
   <main class="card">
     <header class="topbar">
-      <div class="tulip-left" aria-hidden>
+  <div class="tulip-left tulip-sticker-small" aria-hidden>
         <!-- Tulip SVG -->
         <svg viewBox="0 0 64 64" class="tulip-svg"><g fill="none" fill-rule="evenodd"><path d="M32 58s-2-12 0-20 4-10 4-10 6 6 6 10-4 20-10 20z" fill="#8BC34A"/><path d="M32 58s2-12 0-20-4-10-4-10-6 6-6 10 4 20 10 20z" fill="#689F38"/><path d="M22 18c2-8 14-14 18-2 2 6-8 14-8 14s-10-6-10-12z" fill="#FF8A80"/><path d="M42 18c-2-8-14-14-18-2-2 6 8 14 8 14s10-6 10-12z" fill="#FFCDD2"/></g></svg>
       </div>
 
-      <h1 class="title">Happy New Year, my love</h1>
+      <h1 class="title">Happy New Year, Yadav Ji </h1>
 
       <div class="jewel-right" aria-hidden>
         <!-- Simple jewel / sparkle -->
@@ -23,11 +31,12 @@
     </header>
 
     <section class="message">
-      <p class="lead">To the loveliest person I know — may this year bring you as much beauty and sparkle as you bring into my life.</p>
+  <p class="lead">To the loveliest person I know — may this year bring you as much beauty and sparkle as you bring into my life.</p>
+  <p class="bihari">Arre Surabhi, tohara muskaan dekh ke lagela jaise free litti-chokha mil gayil — dil khush ho gayil! 😄</p>
       <div class="row-icons">
-        <div class="tulip-big" aria-hidden>
+  <div class="tulip-big tulip-sticker" aria-hidden>
           <!-- Large tulip inline -->
-          <svg viewBox="0 0 120 160" class="tulip-big-svg"><g fill="none" fill-rule="evenodd"><path d="M60 150s-4-28 0-48 8-24 8-24 12 14 12 24-8 48-20 48z" fill="#81C784"/><path d="M60 150s4-28 0-48-8-24-8-24-12 14-12 24 8 48 20 48z" fill="#66BB6A"/><path d="M36 50c4-18 28-30 36-5 4 12-16 26-16 26s-20-8-20-21z" fill="#FF80AB"/><path d="M84 50c-4-18-28-30-36-5-4 12 16 26 16 26s20-8 20-21z" fill="#F48FB1"/></g></svg>
+          <svg viewBox="0 0 120 160" class="tulip-big-svg"><g fill="none" fill-rule="evenodd"><path d="M60 150s-4-28 0-48 8-24 8-24 12 14 12 24-8 48-20 48z" fill="#81C784"/><path d="M60 150s4-28 0-48-8-24-8-24-12 14-12 24 8 48 20 48z" fill="#66BB6A"/><path class="petal" d="M36 50c4-18 28-30 36-5 4 12-16 26-16 26s-20-8-20-21z" fill="#FF80AB"/><path class="petal" d="M84 50c-4-18-28-30-36-5-4 12 16 26 16 26s20-8 20-21z" fill="#F48FB1"/></g></svg>
         </div>
       </div>
 
@@ -37,7 +46,7 @@
       <p class="small-note">P.S. I picked tulips and a tiny sparkle for you — there is a surprise when you click the button 💖</p>
     </section>
 
-    <footer class="footer">With all my love — Happy 2026 ✨</footer>
+    <footer class="footer">With all my love — Happy 2026 Surabhi Meri Jaan ✨</footer>
   </main>
 
   <canvas id="confetti"></canvas>

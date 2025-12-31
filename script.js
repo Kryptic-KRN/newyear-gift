@@ -28,15 +28,14 @@ requestAnimationFrame(tick);
 // Surprise button
 const btn = document.getElementById("surpriseBtn");
 btn.addEventListener("click", ()=>{
-  // small UI effects
-  document.querySelector(".tulip-big").style.transform = "translateY(-12px) rotate(-4deg)";
+  // open the tulip petals and reveal the hidden Bihari line
+  const tulip = document.querySelector(".tulip-big");
+  if(tulip) tulip.classList.add('open');
+  const bih = document.querySelector('.bihari');
+  if(bih) bih.classList.add('visible');
   makeConfetti(innerWidth/2, innerHeight/2 - 60);
   btn.textContent = "Hope you like it ❤️";
   btn.disabled = true;
 });
 
-// gentle floating of the tulip
-setInterval(()=>{
-  const el = document.querySelector(".tulip-big");
-  el.style.transform = `translateY(${Math.sin(Date.now()/1200)*6}px)`;
-}, 80);
+// gentle floating of the tulip is handled with CSS animation (see styles.css)
